@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-Type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
+    <title>one</title>
+</head>
+<body>
+
+<h1>This is one HTML</h1>
+
+{% if name %}
+    <h3>hello,{{ name }}!</h3>
+{% else %}
+    <h3>Hello,World!</h3>
+{% endif %}
+
+</body>
+</html>
