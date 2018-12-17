@@ -23,6 +23,9 @@ def reg():
     return redirect('/login')
 
 
+@app.route('/info')
+def info():
+    return render_template('info.html')
+
+
 app.run(host='0.0.0.0', port=9527, debug=True)
-
-
