@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-Type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post" novalidate>
+    {{ login_form.username.label }}{{ login_form.username }}{{ login_form.username.errors.0 }}
+    <br>
+    {{ login_form.password.label }}{{ login_form.password }}{{ login_form.password.errors.0 }}
+    <br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

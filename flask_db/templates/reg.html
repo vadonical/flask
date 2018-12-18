@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-Type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post" novalidate>
+    {% for field in reg_form %}
+        <p>{{ field.label }}{{ field }}{{ field.errors.0 }}</p>
+    {% endfor %}
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
