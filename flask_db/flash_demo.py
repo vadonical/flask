@@ -7,12 +7,30 @@ app.secret_key = 'Hello'
 
 @app.route('/')
 def index():
+    flash('one', 'two')
+    flash('thr', 'fou')
+    flash('fiv', 'six')
     return "This is index"
 
 
 class LoginClass(views.MethodView):
     def get(self):
-        return render_template('login.html')
+        print(get_flashed_messages('two'))
+        print(get_flashed_messages('fou'))
+        print(get_flashed_messages('six'))
+        return "LoginClass GET"
 
     def post(self):
-        return "POST"
+        return "LoginClass POST"
+
+
+app.add_url_rule('/login', view_func=LoginClass.as_view('login'))
+
+
+@app.before_first_request
+def bfr():
+    return "BFR"
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
