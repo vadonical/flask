@@ -16,8 +16,9 @@ def index():
 class LoginClass(views.MethodView):
     def get(self):
         print(get_flashed_messages('two'))
-        print(get_flashed_messages('fou'))
-        print(get_flashed_messages('six'))
+        # print(get_flashed_messages('fou'))
+        # print(get_flashed_messages('six'))
+        print(url_for('login'))
         return "LoginClass GET"
 
     def post(self):
