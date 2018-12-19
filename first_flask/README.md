@@ -27,21 +27,70 @@
 
 1. 下载或导入flask包
 
+- [app.py](app.py)
+
 ```python
-from flask import Flask
+from flask import Flask  # 导入Flask模块
 
-app = Flask(__name__)
+app = Flask(__name__)  # 实例化Flask模块，__name__表示当前路径
 
 
-@app.route('/hello')
+@app.route('/hello')  # 设置路由
 def hello():
-    return 'Hello, World!'
+    return 'Hello, World!'  # 返回字符串
+    
+    
+app.run(host='0.0.0.0', port=9527, debug=True)
 ```
 
+### Flask 中的 HttpResponse，redirect 和 render_template
 
+- [app_one.py](app_one.py)
 
+### Flask 中的 request
 
+- [app_two.py](app_two.py)
 
+每个框架中都有处理请求的机制(request),但是每个框架的处理方式和机制是不同的，为了了解 Flask 的 request 中都有什么东西，首先我们要写一个前后端的交互——基于 HTML + Flask 写一段前后端的交互查看下列代码：
 
+methods=\['POST','GET']表示接受请求方式有两种，如果不加上次参数表示默认的 GET 请求。
+
+关于 request 的相关属性和方法有：
+
+- request.method
+    - 表示提交的处理请求方法，可以通过该方法来拿到其请求方法参数。
+    
+- request.form
+    - 表示传递过来的值。我们可以继续使用关键字取值或者 get 方法拿到参数。
+    
+- request.args
+    - 表示所有的 url 参数。
+    
+- request.values
+    - 表示所有的参数。
+    
+- request.cookies
+    - 读取数据中的参数。
+    
+- request.headers
+    - 表示请求头中的所有参数。
+    
+- request.data
+    - 当某些数据无法被处理时都放在里面。
+    
+- request.files
+    - 表示上传的文件。
+    
+- request.path
+    - 获取当前 url 的路径。
+    
+- request.script_root
+    - 获取当前 url 的上一级路径。
+    
+- request.url
+    - 获取当前 url 的全部路径。
+     
+- request.url_root
+    - 获取当前 url 的路径的上一级全部路径。
 
 
