@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63cac8d2-a7db-4bf7-9d7b-7bced5249e51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/temp/page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flask_db/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flask_db/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,14 +49,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="1258" />
-          <entry key="md" value="2918" />
+          <entry key="md" value="3034" />
           <entry key="py" value="2330" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="1258" />
-          <entry key="Markdown" value="2907" />
+          <entry key="Markdown" value="3023" />
           <entry key="PLAIN_TEXT" value="8" />
           <entry key="Python" value="2333" />
         </counts>
@@ -76,8 +72,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="435">
-                <caret line="484" lean-forward="true" selection-start-line="484" selection-end-line="484" />
+              <first_editor relative-caret-position="444">
+                <caret line="481" lean-forward="true" selection-start-line="481" selection-end-line="481" />
               </first_editor>
               <second_editor />
             </state>
@@ -216,7 +212,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1087" />
@@ -431,15 +427,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1087" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.24617068" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.499187" visible="true" weight="0.119936034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.500813" side_tool="true" weight="0.1761488" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.35466945" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.35135135" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -634,8 +630,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="435">
-            <caret line="484" lean-forward="true" selection-start-line="484" selection-end-line="484" />
+          <first_editor relative-caret-position="444">
+            <caret line="481" lean-forward="true" selection-start-line="481" selection-end-line="481" />
           </first_editor>
           <second_editor />
         </state>

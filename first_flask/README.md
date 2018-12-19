@@ -101,7 +101,7 @@ methods=\['POST','GET']表示接受请求方式有两种，如果不加上次参
 
 Flask 中默认的模板语言是 Jinja2。现在我们来一步一步的学习一下 Jinja2。首先我们要在后端定义几个字符串传递到前端：
 
-````text
+````python
 STUDENT = {'name': '张三', 'age': 20, 'gender': '男'},
 
 STUDENT_LIST = [
@@ -121,7 +121,7 @@ STUDENT_DICT = {
 
 - Jinja2 中的 for：
 
-```text
+```html
 {% for foo in 迭代对象 %}
 
 {% endfor %}
@@ -129,7 +129,7 @@ STUDENT_DICT = {
 
 - Jinja2 中的 if：
 
-```text
+```html
 {% if 条件 %}
 
 {% elif 条件 %}
@@ -141,7 +141,7 @@ STUDENT_DICT = {
 
 使用 STUDENT 字典传递至前端：
 
-```text
+```python
 @app_thr.route('/student')
 def student():
     return render_template('student.html', stu=STUDENT)
@@ -149,13 +149,13 @@ def student():
 
 值得注意的是，当单个字段传到前端时是一个类似元组的数据类型：
 
-```
+```html
 ({'name': '张三', 'age': 20, 'gender': '男'},)
 ```
 
 取值的时候要小心。
 
-```text
+```html
 <table border="1px">
     <tr>
         <td>{{ stu.0.name }}</td>
@@ -169,7 +169,7 @@ def student():
 
 使用 STUDENT_LIST 列表传入前端：
 
-```text
+```python
 @app_thr.route('/student_list')
 def student_list():
     return render_template('student_list.html', stu_list=STUDENT_LIST)
@@ -187,7 +187,7 @@ def student_list():
 
 取值：
 
-```text
+```html
 <table border="1px">
     {% for stu in stu_list %}
         <tr>
@@ -201,7 +201,7 @@ def student_list():
 
 使用 STUDENT_DICT 大字典传入前端：
 
-```text
+```python
 @app_thr.route('/student_dict')
 def student_dict():
     return render_template('student_dict.html', stu_dict=STUDENT_DICT)
@@ -209,7 +209,7 @@ def student_dict():
 
 值得注意的是，当大字典传到前端时也是一个大字典数据类型：
 
-```text
+```html
 {
     1: {'name': '李四', 'age': 21, 'gender': '男'}, 
     2: {'name': '小美', 'age': 22, 'gender': '女'}, 
@@ -219,7 +219,7 @@ def student_dict():
 
 取值：
 
-````text
+```html
 <table border="1px">
     {% for foo in stu_dict %}
         <tr>
@@ -230,11 +230,11 @@ def student_dict():
         </tr>
     {% endfor %}
 </table>
-````
+```
 
 所有字段传到前端模板：
 
-```text
+```python
 @app_thr.route('/student_all')
 def student_all():
     return render_template('student_all.html',
@@ -245,7 +245,7 @@ def student_all():
 
 上述代码也可以这样写：
 
-```text
+```python
 @app_thr.route('/student_all')
 def student_all():
     return render_template('student_all.html', **{"stu": STUDENT,
@@ -255,7 +255,7 @@ def student_all():
 
 前端：
 
-```text
+```html
 <h1>This is student</h1>
 
 <table border="1px">
@@ -303,7 +303,7 @@ Jinja2 模板语言为我们提供了很多功能接下来看一下它有什么�
     
 后端：
 
-```text
+```python
 @app_thr.route('/one')
 def one():
     tag = "<h1>这是从后端返回的代码效果</h1>"
@@ -312,7 +312,7 @@ def one():
 
 前端：
 
-```text
+```html
 {{ tag | safe }}
 ```
 
@@ -320,7 +320,7 @@ def one():
 
 后端：
 
-```text
+```python
 from flask import Markup  # 导入函数Markup
 
 @app_thr.route('/two')
@@ -334,7 +334,7 @@ def two():
 
 前端：
 
-```text
+```html
 {{ tag }}
 ```
 
@@ -344,7 +344,7 @@ def two():
 
 在后端定义函数：
 
-```text
+```python
 def sum_one(a, b):
     return a + b
 
@@ -360,7 +360,7 @@ def sum_demo():
 
 前端：
 
-```text
+```html
 <div>{{ tag_one }}</div>
 <div>{{ tag_one(1,1) }}</div>
 <div>{{ tag_one("Hello, ","World!") }}</div>
@@ -372,7 +372,7 @@ def sum_demo():
 
 值得注意的是，最定义的函数名不能和下面路由的函数名字相同，否则浏览器会报下列错误。在模板中字符串变量需要使用引号引起来。
 
-````text
+````html
 builtins.TypeError
 
 TypeError: sum_demo() takes 0 positional arguments but 2 were given
@@ -386,7 +386,7 @@ TypeError: sum_demo() takes 0 positional arguments but 2 were given
 
 - [temp/home.html](temp/home.html)
 
-```text
+```html
 <h1>Welcome to Flask!</h1>
 <h2>The next is content</h2>
 {% block content %}
@@ -454,7 +454,7 @@ if __name__ == '__main__':
 
 前端：
 
-```text
+```html
 <h1>Welcome to Flask!</h1>
 
 {% macro type_text(name, type) %}
@@ -471,7 +471,7 @@ if __name__ == '__main__':
 
 后端：
 
-```text
+```python
 @app_block.route('/page')
 def page():
     return render_template('page.html')
