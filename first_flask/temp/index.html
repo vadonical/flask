@@ -7,13 +7,11 @@
     <title>Title</title>
 </head>
 <body>
-
-<div>{{ tag_one }}</div>
-<div>{{ tag_one(1,1) }}</div>
-<div>{{ tag_one("Hello, ","World!") }}</div>
-<hr>
-<div>{{ tag_two }}</div>
-<div>{{ tag_two(1,2,3) }}</div>
-<div>{{ tag_two('Java ', 'Python ', 'Go') }}</div>
+<h1>Welcome to Flask!</h1>
+<h2>The next is content</h2>
+{% block content %}
+{% endblock %}
+<h2>The above is context</h2>
+<h1>Flask is a good framework...</h1>
 </body>
 </html>

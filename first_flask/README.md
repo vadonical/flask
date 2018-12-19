@@ -345,7 +345,114 @@ def two():
 在后端定义函数：
 
 ```text
+def sum_one(a, b):
+    return a + b
 
+
+def sum_two(a, b, c):
+    return a + b + c
+
+
+@app_thr.route('/sum_demo')
+def sum_demo():
+    return render_template('sum_demo.html', tag_one=sum_one, tag_two=sum_two)
 ```
+
+前端：
+
+```text
+<div>{{ tag_one }}</div>
+<div>{{ tag_one(1,1) }}</div>
+<div>{{ tag_one("Hello, ","World!") }}</div>
+<hr>
+<div>{{ tag_two }}</div>
+<div>{{ tag_two(1,2,3) }}</div>
+<div>{{ tag_two('Java ', 'Python ', 'Go') }}</div>
+```
+
+值得注意的是，最定义的函数名不能和下面路由的函数名字相同，否则浏览器会报下列错误。在模板中字符串变量需要使用引号引起来。
+
+````text
+builtins.TypeError
+
+TypeError: sum_demo() takes 0 positional arguments but 2 were given
+````
+
+#### Jinja2 模板复用 block
+
+如果我们前端页面有大量重复页面，没必要每次都写，可以使用模板复用的方式复用模板：
+
+前端：
+
+- [temp/home.html](temp/home.html)
+
+```text
+<h1>Welcome to Flask!</h1>
+<h2>The next is content</h2>
+{% block content %}
+{% endblock %}
+<h2>The above is context</h2>
+<h1>Flask is a good framework...</h1>
+```
+
+- [temp/login.html](temp/login.html)
+
+```text
+{% extends "index.html" %}
+{% block content %}
+    <h1>LOGIN</h1>
+    <form>
+        <label>账号：
+            <input type="text" name="username">
+        </label>
+        <label>密码：
+            <input type="password" name="password">
+        </label>
+        <input type="submit" value="提交">
+    </form>
+{% endblock %}
+```
+
+- [temp/home.html](temp/home.html)
+
+```text
+{% extends 'index.html' %}
+{% block content %}
+    <h1>This is home page</h1>
+{% endblock %}
+```
+
+后端：
+
+- [app_block.py](app_block.py)
+
+```python
+from flask import Flask, render_template
+
+app_block = Flask(__name__, template_folder='temp')  # 指定模板位置
+
+
+@app_block.route('/login')
+def login():
+    return render_template('login.html')
+
+
+@app_block.route('/home')
+def home():
+    return render_template('home.html')
+
+
+if __name__ == '__main__':
+    app_block.run('127.0.0.1', 5004, debug=True)
+```
+
+分析：home 和 login 页面继承了 index 页面，书写其中 block content 的内容。目的能够减少代码的冗余性，增加代码的重用性。
+
+#### Jinja2 模板语言中的宏定义
+ 
+
+
+
+
 
 

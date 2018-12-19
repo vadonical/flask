@@ -56,13 +56,17 @@ def two():
     return render_template("two.html", tag=markup_tag)
 
 
-def sum_demo(a, b):
-    return int(a + b)
+def sum_one(a, b):
+    return a + b
+
+
+def sum_two(a, b, c):
+    return a + b + c
 
 
 @app_thr.route('/sum_demo')
 def sum_demo():
-    return render_template('sum_demo.html', tag=sum_demo)
+    return render_template('sum_demo.html', tag_one=sum_one, tag_two=sum_two)
 
 
 if __name__ == '__main__':
