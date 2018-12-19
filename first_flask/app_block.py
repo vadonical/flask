@@ -13,5 +13,10 @@ def home():
     return render_template('home.html')
 
 
+@app_block.route('/page')
+def page():
+    return render_template('page.html')
+
+
 if __name__ == '__main__':
     app_block.run('127.0.0.1', 5004, debug=True)

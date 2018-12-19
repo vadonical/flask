@@ -449,8 +449,35 @@ if __name__ == '__main__':
 分析：home 和 login 页面继承了 index 页面，书写其中 block content 的内容。目的能够减少代码的冗余性，增加代码的重用性。
 
 #### Jinja2 模板语言中的宏定义
- 
 
+宏定义就是自定义模板，在后面的代码中调用。
+
+前端：
+
+```text
+<h1>Welcome to Flask!</h1>
+
+{% macro type_text(name, type) %}
+    <label>
+        <input type="{{ type }}" name="{{ name }}" value="{{ name }}">
+    </label>
+{% endmacro %}
+
+<h2>Use macro below:</h2>
+
+{{ type_text("one", "text") }}
+{{ type_text("two", "text") }}
+```
+
+后端：
+
+```text
+@app_block.route('/page')
+def page():
+    return render_template('page.html')
+```
+ 
+宏定义一般情况下很少应用到，但是要知道有这么个概念。
 
 
 
