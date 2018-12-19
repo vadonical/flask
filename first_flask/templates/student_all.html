@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-Type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>This is student</h1>
+
+<table border="1px">
+    <tr>
+        <td>{{ stu.0.name }}</td>
+        <td>{{ stu.0["age"] }}</td>
+        <td>{{ stu.0.get("gender") }}</td>
+    </tr>
+</table>
+
+<hr>
+
+<h1>This is student_list</h1>
+<table border="1px">
+    {% for stu in stu_list %}
+        <tr>
+            <td>{{ stu.name }}</td>
+            <td>{{ stu.age }}</td>
+            <td>{{ stu.gender }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<h1>This is student_dict</h1>
+<table border="1px">
+    {% for foo in stu_dict %}
+        <tr>
+            <td>{{ foo }}</td>
+            <td>{{ stu_dict.get(foo).name }}</td>
+            <td>{{ stu_dict[foo].get("age") }}</td>
+            <td>{{ stu_dict[foo]["gender"] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

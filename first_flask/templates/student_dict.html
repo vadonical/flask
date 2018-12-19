@@ -7,19 +7,19 @@
     <title>Title</title>
 </head>
 <body>
-<h1>This is Jinja2 test of student_list</h1>
+<h1>This is Jinja2 test of student_dict</h1>
 
-<div>{{ stu_list }}</div>
+<div>{{ stu_dict }}</div>
 
 <table border="1px">
-    {% for stu in stu_list %}
+    {% for foo in stu_dict %}
         <tr>
-            <td>{{ stu.name }}</td>
-            <td>{{ stu.age }}</td>
-            <td>{{ stu.gender }}</td>
+            <td>{{ foo }}</td>
+            <td>{{ stu_dict.get(foo).name }}</td>
+            <td>{{ stu_dict[foo].get("age") }}</td>
+            <td>{{ stu_dict[foo]["gender"] }}</td>
         </tr>
     {% endfor %}
 </table>
-
 </body>
 </html>

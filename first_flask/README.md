@@ -95,6 +95,8 @@ methods=\['POST','GET']表示接受请求方式有两种，如果不加上次参
 
 ### Jinja2 模板语言
 
+#### Jinja2 基础
+
 - [app_thr.py](app_thr.py)
 
 Flask 中默认的模板语言是 Jinja2。现在我们来一步一步的学习一下 Jinja2。首先我们要在后端定义几个字符串传递到前端：
@@ -115,6 +117,28 @@ STUDENT_DICT = {
 }
 ````
 
+对比 Django，Jinja2 模板语言中也有流程控制功能：
+
+- Jinja2 中的 for：
+
+```text
+{% for foo in 迭代对象 %}
+
+{% endfor %}
+```
+
+- Jinja2 中的 if：
+
+```text
+{% if 条件 %}
+
+{% elif 条件 %}
+    
+{% else %}
+    
+{% endif %}
+```
+
 使用 STUDENT 字典传递至前端：
 
 ```text
@@ -123,7 +147,13 @@ def student():
     return render_template('student.html', stu=STUDENT)
 ```
 
-值得注意的是，当单个字段传到前端时是一个类似元组的数据类型 ```({'name': '张三', 'age': 20, 'gender': '男'},)```，取值的时候要小心：
+值得注意的是，当单个字段传到前端时是一个类似元组的数据类型：
+
+```
+({'name': '张三', 'age': 20, 'gender': '男'},)
+```
+
+取值的时候要小心。
 
 ```text
 <table border="1px">
@@ -138,6 +168,140 @@ def student():
 与 Django 中模板语言不同的是，Jinja2 支持键值对和 get 方法取值。
 
 使用 STUDENT_LIST 列表传入前端：
+
+```text
+@app_thr.route('/student_list')
+def student_list():
+    return render_template('student_list.html', stu_list=STUDENT_LIST)
+```
+
+值得注意的是，当列表字典传到前端时也是一个列表的数据类型：
+
+```
+[
+    {'name': '李四', 'age': 21, 'gender': '男'}, 
+    {'name': '小美', 'age': 22, 'gender': '女'}, 
+    {'name': '王五', 'age': 23, 'gender': '男'}
+]
+```
+
+取值：
+
+```text
+<table border="1px">
+    {% for stu in stu_list %}
+        <tr>
+            <td>{{ stu.name }}</td>
+            <td>{{ stu.age }}</td>
+            <td>{{ stu.gender }}</td>
+        </tr>
+    {% endfor %}
+</table>
+```
+
+使用 STUDENT_DICT 大字典传入前端：
+
+```text
+@app_thr.route('/student_dict')
+def student_dict():
+    return render_template('student_dict.html', stu_dict=STUDENT_DICT)
+```
+
+值得注意的是，当大字典传到前端时也是一个大字典数据类型：
+
+```text
+{
+    1: {'name': '李四', 'age': 21, 'gender': '男'}, 
+    2: {'name': '小美', 'age': 22, 'gender': '女'}, 
+    3: {'name': '王五', 'age': 23, 'gender': '男'}
+}
+```
+
+取值：
+
+````text
+<table border="1px">
+    {% for foo in stu_dict %}
+        <tr>
+            <td>{{ foo }}</td>
+            <td>{{ stu_dict.get(foo).name }}</td>
+            <td>{{ stu_dict[foo].get("age") }}</td>
+            <td>{{ stu_dict[foo]["gender"] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+````
+
+所有字段传到前端模板：
+
+```text
+@app_thr.route('/student_all')
+def student_all():
+    return render_template('student_all.html',
+                           stu=STUDENT,
+                           stu_list=STUDENT_LIST,
+                           stu_dict=STUDENT_DICT)
+```
+
+上述代码也可以这样写：
+
+```text
+@app_thr.route('/student_all')
+def student_all():
+    return render_template('student_all.html', **{"stu": STUDENT,
+                                                  "stu_list": STUDENT_LIST,
+                                                  "stu_dict": STUDENT_DICT})
+```
+
+前端：
+
+```text
+<h1>This is student</h1>
+
+<table border="1px">
+    <tr>
+        <td>{{ stu.0.name }}</td>
+        <td>{{ stu.0["age"] }}</td>
+        <td>{{ stu.0.get("gender") }}</td>
+    </tr>
+</table>
+
+<hr>
+
+<h1>This is student_list</h1>
+<table border="1px">
+    {% for stu in stu_list %}
+        <tr>
+            <td>{{ stu.name }}</td>
+            <td>{{ stu.age }}</td>
+            <td>{{ stu.gender }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<h1>This is student_dict</h1>
+<table border="1px">
+    {% for foo in stu_dict %}
+        <tr>
+            <td>{{ foo }}</td>
+            <td>{{ stu_dict.get(foo).name }}</td>
+            <td>{{ stu_dict[foo].get("age") }}</td>
+            <td>{{ stu_dict[foo]["gender"] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+```
+
+#### Jinja2 高阶
+
+Jinja2 模板语言为我们提供了很多功能接下来看一下它有什么高级的用法。
+
+- safe
+    - 从后台返回字符到前端作为前端代码。
+
+
 
 
 

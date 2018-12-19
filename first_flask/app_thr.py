@@ -27,5 +27,18 @@ def student_list():
     return render_template('student_list.html', stu_list=STUDENT_LIST)
 
 
+@app_thr.route('/student_dict')
+def student_dict():
+    return render_template('student_dict.html', stu_dict=STUDENT_DICT)
+
+
+@app_thr.route('/student_all')
+def student_all():
+    return render_template('student_all.html',
+                           stu=STUDENT,
+                           stu_list=STUDENT_LIST,
+                           stu_dict=STUDENT_DICT)
+
+
 if __name__ == '__main__':
     app_thr.run('127.0.0.1', 5003, debug=True)
