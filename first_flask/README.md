@@ -93,4 +93,52 @@ methods=\['POST','GET']表示接受请求方式有两种，如果不加上次参
 - request.url_root
     - 获取当前 url 的路径的上一级全部路径。
 
+### Jinja2 模板语言
+
+- [app_thr.py](app_thr.py)
+
+Flask 中默认的模板语言是 Jinja2。现在我们来一步一步的学习一下 Jinja2。首先我们要在后端定义几个字符串传递到前端：
+
+````text
+STUDENT = {'name': '张三', 'age': 20, 'gender': '男'},
+
+STUDENT_LIST = [
+    {'name': '李四', 'age': 21, 'gender': '男'},
+    {'name': '小美', 'age': 22, 'gender': '女'},
+    {'name': '王五', 'age': 23, 'gender': '男'}
+]
+
+STUDENT_DICT = {
+    1: {'name': '李四', 'age': 21, 'gender': '男'},
+    2: {'name': '小美', 'age': 22, 'gender': '女'},
+    3: {'name': '王五', 'age': 23, 'gender': '男'}
+}
+````
+
+使用 STUDENT 字典传递至前端：
+
+```text
+@app_thr.route('/student')
+def student():
+    return render_template('student.html', stu=STUDENT)
+```
+
+值得注意的是，当单个字段传到前端时是一个类似元组的数据类型 ```({'name': '张三', 'age': 20, 'gender': '男'},)```，取值的时候要小心：
+
+```text
+<table border="1px">
+    <tr>
+        <td>{{ stu.0.name }}</td>
+        <td>{{ stu.0["age"] }}</td>
+        <td>{{ stu.0.get("gender") }}</td>
+    </tr>
+</table>
+```
+
+与 Django 中模板语言不同的是，Jinja2 支持键值对和 get 方法取值。
+
+使用 STUDENT_LIST 列表传入前端：
+
+
+
 
