@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask import Markup
 
 app_thr = Flask(__name__)
 
@@ -38,6 +39,30 @@ def student_all():
                            stu=STUDENT,
                            stu_list=STUDENT_LIST,
                            stu_dict=STUDENT_DICT)
+
+
+@app_thr.route('/one')
+def one():
+    tag = "<h1>这是从后端返回的代码效果</h1>"
+    return render_template('one.html', tag=tag)
+
+
+@app_thr.route('/two')
+def two():
+    tag = "<h1>这是从后端返回的代码效果</h1>"
+    markup_tag = Markup(tag)
+    print(markup_tag)  # <h1>这是从后端返回的代码效果</h1>
+    print(type(markup_tag))  # <class 'markupsafe.Markup'>
+    return render_template("two.html", tag=markup_tag)
+
+
+def sum_demo(a, b):
+    return int(a + b)
+
+
+@app_thr.route('/sum_demo')
+def sum_demo():
+    return render_template('sum_demo.html', tag=sum_demo)
 
 
 if __name__ == '__main__':

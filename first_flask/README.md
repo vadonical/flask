@@ -294,15 +294,58 @@ def student_all():
 </table>
 ```
 
-#### Jinja2 高阶
+#### safe 和 Markup
 
 Jinja2 模板语言为我们提供了很多功能接下来看一下它有什么高级的用法。
 
 - safe
     - 从后台返回字符到前端作为前端代码。
+    
+后端：
 
+```text
+@app_thr.route('/one')
+def one():
+    tag = "<h1>这是从后端返回的代码效果</h1>"
+    return render_template('one.html', tag=tag)
+```
 
+前端：
 
+```text
+{{ tag | safe }}
+```
 
+要让后端的字符代码能在前端直接执行，我们不一定非要在前端使用 safe 关键字，我们也可以直接从后端入手。
+
+后端：
+
+```text
+from flask import Markup  # 导入函数Markup
+
+@app_thr.route('/two')
+def two():
+    tag = "<h1>这是从后端返回的代码效果</h1>"
+    markup_tag = Markup(tag)
+    print(markup_tag)  # <h1>这是从后端返回的代码效果</h1>
+    print(type(markup_tag))  # <class 'markupsafe.Markup'>
+    return render_template("two.html", tag=markup_tag)
+```
+
+前端：
+
+```text
+{{ tag }}
+```
+
+上述两种方法得到的效果是一样的。
+
+#### Jinja2 中执行 Python 函数
+
+在后端定义函数：
+
+```text
+
+```
 
 
