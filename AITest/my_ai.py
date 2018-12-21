@@ -8,7 +8,7 @@ SECRET_KEY = 'kukGiDvX5eNO2CLiiNjHF1mtTFm0VPw2'
 client = AipSpeech(APP_ID, API_KEY, SECRET_KEY)
 nlp_client = AipNlp(APP_ID, API_KEY, SECRET_KEY)
 
-res = client.synthesis('兰兰，你喜不喜欢杨真贤？杨真贤很喜欢你呢，她放不下你，咋办？', 'zh', 1, {
+res = client.synthesis('这是测试？', 'zh', 1, {
     "per": 4,
     "pit": 8,
     "spd": 4,
