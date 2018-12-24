@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-Type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="application/javascript">
+    let ws = new WebSocket("ws://192.168.12.67:9527");
+    console.log(ws);
+    ws.onopen = function () {
+        alert("Ready");
+        console.log(ws);
+    };
+
+    ws.onmessage = function (status) {
+        console.log(status.data)
+    };
+
+    ws.onclose = function () {
+        window.location.reload();
+    }
+</script>
+
+</body>
+</html>
